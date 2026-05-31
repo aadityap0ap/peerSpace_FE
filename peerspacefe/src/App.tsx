@@ -1,9 +1,10 @@
-import MessagePage from "./MessagePage";
+import HomePage from "./HomePage";
+//import MessagePage from "./MessagePage";
 
 export default function App(){
   return(
     <div>
-      <MessagePage/>
+      <HomePage/>
     </div>
   )
 }
