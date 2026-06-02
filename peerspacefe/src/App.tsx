@@ -1,11 +1,10 @@
-//import HomePage from "./Pages/HomePage";
-import { Signin } from "./Pages/SignIn";
-//import MessagePage from "./MessagePage";
+//import { SignIn } from "./Pages/SignIn";
+import { SignUp } from "./Pages/SignUp";
 
 export default function App(){
   return(
     <div>
-    <Signin/>
+      <SignUp/>
     </div>
   )
 }

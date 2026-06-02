@@ -1,10 +1,10 @@
-export function SignIn() {
+export function SignUp() {
   return (
     <div className="h-screen w-screen bg-gray-100 flex justify-center items-center">
       <div className="bg-white rounded-lg border p-8 w-80 flex flex-col">
         
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Sign In
+          Sign Up
         </h2>
 
         <input
@@ -19,7 +19,7 @@ export function SignIn() {
         />
 
         <button className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-          Sign In
+          Sign Up
         </button>
 
       </div>
