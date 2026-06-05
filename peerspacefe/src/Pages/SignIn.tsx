@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export function SignIn() {
+  const navigate = useNavigate();
   const[email,setEmail] = useState("");
   const[password,setPassword] = useState("");
 
@@ -16,6 +18,7 @@ export function SignIn() {
       alert(response.data.message);
       setEmail("");
       setPassword("");
+      navigate("/homepage");
     }
     catch(error : any){
       alert(error.response?.data?.message || "SignIn failed");
