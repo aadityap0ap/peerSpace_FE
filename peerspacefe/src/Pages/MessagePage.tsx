@@ -9,7 +9,7 @@ export default function MessagePage() {
           className="flex-1 p-3 rounded bg-gray-800 text-white outline-none"
         />
         <button className="bg-purple-600 px-5 py-3 rounded text-white">
-          Send
+          Send it
         </button>
       </div>
     </div>

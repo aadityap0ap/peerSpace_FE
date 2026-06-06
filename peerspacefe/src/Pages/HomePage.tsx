@@ -6,14 +6,17 @@ export default function HomePage() {
 
   const joinRoom = () => {
     if (!roomId.trim()) return;
+
     console.log("Joining room:", roomId);
+
     // navigate(`/chat/${roomId}`)
+
     setShowModal(false);
+    setRoomId("");
   };
 
   return (
     <div className="h-screen bg-black flex">
-      
       {/* Sidebar */}
       <div className="w-64 bg-gray-900 text-white flex flex-col">
         <div className="p-5 text-2xl font-bold border-b border-gray-800">
@@ -37,15 +40,27 @@ export default function HomePage() {
 
       {/* Main Section */}
       <div className="flex-1 flex flex-col">
-
         {/* Top Bar */}
         <div className="h-16 bg-gray-900 border-b border-gray-800 flex items-center justify-between px-6">
           <h1 className="text-white text-xl font-semibold">
             Dashboard
           </h1>
 
-          <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
-            A
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
+            >
+              Join Room
+            </button>
+
+            <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded">
+              Create Room
+            </button>
+
+            <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
+              A
+            </div>
           </div>
         </div>
 
@@ -55,20 +70,15 @@ export default function HomePage() {
             Welcome to ChatApp
           </h1>
 
-
-          <button
-            onClick={() => setShowModal(true)}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg"
-          >
-            Join Room
-          </button>
+          <p className="text-gray-400 text-lg">
+            Create a room or join an existing room to start chatting.
+          </p>
         </div>
       </div>
 
       {/* Join Room Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/60 flex justify-center items-center">
-
           <div className="bg-gray-900 p-6 rounded-xl w-96">
             <h2 className="text-white text-2xl font-semibold mb-4">
               Join Room
@@ -84,7 +94,10 @@ export default function HomePage() {
 
             <div className="flex gap-3">
               <button
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setShowModal(false);
+                  setRoomId("");
+                }}
                 className="flex-1 bg-gray-700 text-white py-3 rounded"
               >
                 Cancel
@@ -98,7 +111,6 @@ export default function HomePage() {
               </button>
             </div>
           </div>
-
         </div>
       )}
     </div>
