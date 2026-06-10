@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false);
   const [roomId, setRoomId] = useState("");
   const [createdRoomId, setCreatedRoomId] = useState("");
+  const navigate = useNavigate();
 
   const createRoom = async() => {
     try{
@@ -26,15 +29,37 @@ export default function HomePage() {
     }
   } 
 
-  const joinRoom = () => {
-    if (!roomId.trim()) return;
-
-    console.log("Joining room:", roomId);
-
-    // navigate(`/chat/${roomId}`)
-
-    setShowModal(false);
-    setRoomId("");
+  const joinRoom = async() => {
+    /*
+This validation ensures that the user cannot attempt to join a room with an empty Room ID.
+The trim() method removes all leading and trailing spaces from the input string.
+If the user enters an empty string ("") or only spaces ("     "), trim() converts it into an empty string.
+In JavaScript, an empty string is considered a falsy value, so !roomId.trim() becomes true.
+When this condition is true, the function immediately returns and stops further execution.
+This prevents unnecessary API calls to the backend and ensures that only valid Room IDs are processed.
+*/  
+       if (!roomId.trim()) return;
+       try{
+        const token = localStorage.getItem("token")
+        const response = await axios.post(
+          "http://localhost:3000/room/findRoom",
+          {
+            roomId
+          },
+          {
+            headers:{
+            Authorization : `Bearer ${token}`
+          }
+          }
+        );
+        alert(response.data.message);
+        setShowModal(false);
+         navigate(`/chat/${roomId}`)
+         setRoomId("");
+       }
+       catch(error : any){
+        console.log(error.response?.data?.message || "Failed to join the room")
+       }
   };
 
   return (

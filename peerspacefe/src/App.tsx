@@ -11,9 +11,17 @@ export default function App(){
       <Route path="/" element={<Home/>} />
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/signin" element={<SignIn/>}/>
-      <Route path="/messagepage" element={<MessagePage/>}/>
+     <Route path="/chat/:roomId" element={<MessagePage />} />
       <Route path="/homepage" element={<HomePage/>}/>
     </Routes>
     </BrowserRouter>
   )
 }
+
+// export default function App(){
+//   return(
+//     <div>
+//       Hii
+//     </div>
+//   )
+// }
