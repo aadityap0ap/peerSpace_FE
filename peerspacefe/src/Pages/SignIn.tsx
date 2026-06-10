@@ -15,6 +15,7 @@ export function SignIn() {
         password
       }
       );
+      localStorage.setItem("token",response.data.token);
       alert(response.data.message);
       setEmail("");
       setPassword("");
