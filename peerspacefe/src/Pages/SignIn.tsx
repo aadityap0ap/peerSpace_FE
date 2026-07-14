@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export function SignIn() {
   const navigate = useNavigate();
-  const[email,setEmail] = useState("");
+  const[uniqueId,setUniqueId] = useState("");
   const[password,setPassword] = useState("");
 
   async function handleSignin(){
@@ -11,13 +11,13 @@ export function SignIn() {
       const response = await axios.post(
         "http://localhost:3000/auth/signin",
       {
-        email,
+        uniqueId,
         password
       }
       );
       localStorage.setItem("token",response.data.token);
       alert(response.data.message);
-      setEmail("");
+      setUniqueId("");
       setPassword("");
       navigate("/homepage");
     }
@@ -34,8 +34,8 @@ export function SignIn() {
         </h2>
 
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={uniqueId}
+          onChange={(e) => setUniqueId(e.target.value)}
           className="px-4 py-2 border rounded mb-3 outline-none focus:border-blue-500"
           placeholder="email"
         />
