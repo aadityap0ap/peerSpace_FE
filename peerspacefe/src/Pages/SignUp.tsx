@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
   const navigate = useNavigate();
+  const [uniqueId,setUinqueId] = useState("");
   const [email,setEmail] = useState("");
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
@@ -14,12 +15,14 @@ export function SignUp() {
       const response =  await axios.post(
         "http://localhost:3000/auth/signup",
         {
+          uniqueId,
           email,
           username,
           password
         }
       );
       alert(response.data.message);
+      setUinqueId("");
       setEmail("");
       setUsername("");
       setPassword("");
@@ -37,6 +40,13 @@ export function SignUp() {
           Sign Up
         </h2>
         
+         <input
+          value={uniqueId}
+          onChange={(e) => setUinqueId(e.target.value)}
+          className="px-4 py-2 border rounded mb-3 outline-none focus:border-blue-500"
+          placeholder="UniqueId"
+        /> 
+         
          <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
