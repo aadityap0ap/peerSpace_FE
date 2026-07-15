@@ -4,6 +4,7 @@ import MessagePage from "./Pages/MessagePage";
 import { SignUp } from "./Pages/SignUp";
 import HomePage from "./Pages/HomePage";
 import Home from "./Pages/Home";
+import SearchPage from "./Pages/SearchPage";
 export default function App(){
   return(
     <BrowserRouter>
@@ -13,6 +14,7 @@ export default function App(){
       <Route path="/signin" element={<SignIn/>}/>
      <Route path="/chat/:roomId" element={<MessagePage />} />
       <Route path="/homepage" element={<HomePage/>}/>
+      <Route path="/search" element={<SearchPage/>} />
     </Routes>
     </BrowserRouter>
   )

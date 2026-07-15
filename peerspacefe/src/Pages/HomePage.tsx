@@ -95,6 +95,13 @@ This prevents unnecessary API calls to the backend and ensures that only valid R
 
           <div className="flex items-center gap-3">
             <button
+            onClick={() => navigate("/search")}
+            className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"
+            >
+           Search
+           </button>
+
+            <button
               onClick={() => setShowModal(true)}
               className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
             >
