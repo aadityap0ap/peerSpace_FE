@@ -79,14 +79,20 @@ This prevents unnecessary API calls to the backend and ensures that only valid R
             Recent Rooms
           </button>
 
-          <button className="w-full text-left p-3 rounded hover:bg-gray-800">
-            Settings
-          </button>
-
           <button 
           onClick={() => navigate("/requests")}
           className="w-full text-left p-3 rounded hover:bg-gray-800">
             Requests
+          </button>
+
+          <button 
+          onClick={() => navigate("/friendList")}
+          className="w-full text-left p-3 rounded hover:bg-gray-800">
+            My Friends
+          </button>
+
+          <button className="w-full text-left p-3 rounded hover:bg-gray-800">
+            Settings
           </button>
         </div>
       </div>
