@@ -39,6 +39,50 @@ export default function FriendRequest(){
       setLoading(false);
     }
 };
+  
+  async function acceptRequest(requestId : string){
+    try{
+        const token = localStorage.getItem("token");
+        const response = await axios.post(
+            "http://localhost:3000/friend/accept",
+            {
+                requestId,
+            },
+            {
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            }
+        );
+        alert(response.data.message);
+        getRequests();
+    }
+    catch (error: any) {
+      alert(error.response?.data?.message);
+    }
+  };
+
+  async function rejectRequest(requestId : string){
+    try{
+        const token = localStorage.getItem("token");
+        const response = await axios.post(
+            "http://localstorage:3000/friend/reject",
+            {
+                requestId,
+            },
+            {
+                headers : {
+                    Authorization : `Bearer ${token}`,
+                }
+            }
+        );
+        alert(response.data.message);
+        getRequests();
+    }
+    catch(error : any){
+        alert(error.response?.data?.message);
+    }
+  };
 
 return (
     <div className="min-h-screen bg-black p-8">
@@ -88,7 +132,7 @@ return (
 
             <div className="flex gap-3">
 
-              {/* <button
+              <button
                 onClick={() => acceptRequest(request._id)}
                 className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg"
               >
@@ -100,7 +144,7 @@ return (
                 className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg"
               >
                 Reject
-              </button> */}
+              </button> 
             </div>
           </div>
         ))}
