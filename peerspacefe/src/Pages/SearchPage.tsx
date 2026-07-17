@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 export default function SearchPage(){
     const [uniqueId,setUniqueId] = useState("");
@@ -15,7 +16,7 @@ export default function SearchPage(){
             setLoading(true);
             const token = localStorage.getItem("token");
             const response = await axios.get(
-                "http://localhost:3000/friend/search",{
+                apiUrl("/friend/search"),{
                     params:{
                         uniqueId,
                     },
@@ -41,7 +42,7 @@ export default function SearchPage(){
         try{
             const token = localStorage.getItem("token");
             const response = await axios.post(
-                "http://localhost:3000/friend/request",
+                apiUrl("/friend/request"),
                 {
                     receiverId: user.uniqueId,
                 },

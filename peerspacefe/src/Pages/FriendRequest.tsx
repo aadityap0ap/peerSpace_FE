@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 
 interface FriendRequest{
@@ -24,7 +25,7 @@ export default function FriendRequest(){
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:3000/friend/pending",
+        apiUrl("/friend/pending"),
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -44,7 +45,7 @@ export default function FriendRequest(){
     try{
         const token = localStorage.getItem("token");
         const response = await axios.post(
-            "http://localhost:3000/friend/accept",
+            apiUrl("/friend/accept"),
             {
                 requestId,
             },
@@ -66,7 +67,7 @@ export default function FriendRequest(){
     try{
         const token = localStorage.getItem("token");
         const response = await axios.post(
-            "http://localstorage:3000/friend/reject",
+            apiUrl("/friend/reject"),
             {
                 requestId,
             },

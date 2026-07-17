@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { WS_URL } from "../config/api";
 
 export default function MessagePage() {
   const { roomId } = useParams();
@@ -15,7 +16,7 @@ export default function MessagePage() {
 
   // Connect to WebSocket when the page loads
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3000");
+    const ws = new WebSocket(WS_URL);
 
     wsRef.current = ws;
 

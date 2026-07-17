@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 interface Friend{
     _id : string,
@@ -20,7 +21,7 @@ export default function FriendsPage(){
             setLoading(true);
             const token = localStorage.getItem("token");
             const response = await axios.get(
-                "http://localhost:3000/friend/friendList",
+                apiUrl("/friend/friendList"),
                 {
                     headers:{
                         Authorization : `Bearer ${token}`,
@@ -41,7 +42,7 @@ export default function FriendsPage(){
       try{
         const token = localStorage.getItem("token");
         const response = await axios.post(
-          "http://localhost:3000/friend/remove",
+          apiUrl("/friend/remove"),
         {
           friendId
         },

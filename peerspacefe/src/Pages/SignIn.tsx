@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../config/api";
 export function SignIn() {
   const navigate = useNavigate();
   const[uniqueId,setUniqueId] = useState("");
@@ -9,7 +10,7 @@ export function SignIn() {
   async function handleSignin(){
     try{
       const response = await axios.post(
-        "http://localhost:3000/auth/signin",
+        apiUrl("/auth/signin"),
       {
         uniqueId,
         password

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../config/api";
 
 
 export function SignUp() {
@@ -13,7 +14,7 @@ export function SignUp() {
   async function handleSignUp(){
     try{
       const response =  await axios.post(
-        "http://localhost:3000/auth/signup",
+        apiUrl("/auth/signup"),
         {
           uniqueId,
           email,

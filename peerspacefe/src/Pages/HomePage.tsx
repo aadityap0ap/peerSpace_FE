@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../config/api";
 
 
 export default function HomePage() {
@@ -14,7 +15,7 @@ export default function HomePage() {
       const token = localStorage.getItem("token");
       // axios.post(URL, BODY, CONFIG)
       const response = await axios.post(
-        "http://localhost:3000/room/createRoom",
+        apiUrl("/room/createRoom"),
         {},
         {
           headers:{
@@ -42,7 +43,7 @@ This prevents unnecessary API calls to the backend and ensures that only valid R
        try{
         const token = localStorage.getItem("token")
         const response = await axios.post(
-          "http://localhost:3000/room/findRoom",
+          apiUrl("/room/findRoom"),
           {
             roomId
           },
