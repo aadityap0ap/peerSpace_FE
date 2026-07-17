@@ -37,6 +37,27 @@ export default function FriendsPage(){
         }
     };
 
+    async function removeFriend(friendId : string){
+      try{
+        const token = localStorage.getItem("token");
+        const response = await axios.post(
+          "http://localhost:3000/friend/remove",
+        {
+          friendId
+        },
+        {
+          headers : {
+            Authorization : `Bearer ${token}`
+          },
+        }
+        );
+        alert(response.data.message);
+        getFriends();
+      }catch(error : any){
+        alert(error.response?.data?.message);
+      }
+    };
+
     return (
     <div className="min-h-screen bg-black p-8">
 
@@ -90,14 +111,14 @@ export default function FriendsPage(){
                 className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg"
               >
                 Chat
-              </button>
+              </button> */}
 
               <button
                 onClick={() => removeFriend(friend._id)}
                 className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg"
               >
                 Remove
-              </button> */}
+              </button>
 
             </div>
 
