@@ -5,7 +5,7 @@ import { SignUp } from "./Pages/SignUp";
 import HomePage from "./Pages/HomePage";
 import Home from "./Pages/Home";
 import SearchPage from "./Pages/SearchPage";
-import FriendRequest from "./Pages/FriendRquest";
+import FriendRequest from "./Pages/FriendRequest";
 import FriendsPage from "./Pages/FriendsPage";
 export default function App(){
   return(

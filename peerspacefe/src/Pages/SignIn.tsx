@@ -37,7 +37,7 @@ export function SignIn() {
           value={uniqueId}
           onChange={(e) => setUniqueId(e.target.value)}
           className="px-4 py-2 border rounded mb-3 outline-none focus:border-blue-500"
-          placeholder="email"
+          placeholder="userid"
         />
 
         <input
