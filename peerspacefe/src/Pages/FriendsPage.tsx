@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../config/api";
+import { useNavigate } from "react-router-dom";
 
 interface Friend{
     _id : string,
@@ -12,6 +13,7 @@ export default function FriendsPage(){
     const[friends,setFriends] = useState<Friend[]>([]);
     const [loading,setLoading] = useState(true)
     
+    const navigate = useNavigate();
     useEffect(() => {
         getFriends();
     },[]);
@@ -58,7 +60,29 @@ export default function FriendsPage(){
         alert(error.response?.data?.message);
       }
     };
+    
+    async function openChat(friendId: string) {
+    try {
+      const token = localStorage.getItem("token");
 
+      const response = await axios.post(
+        apiUrl("/friend/open"),
+        {
+          friendId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      navigate(`/chat/${response.data.conversation._id}`);
+    } catch (error: any) {
+      alert(error.response?.data?.message);
+    }
+  }
+    
     return (
     <div className="min-h-screen bg-black p-8">
 
@@ -107,12 +131,12 @@ export default function FriendsPage(){
 
             <div className="flex gap-3">
 
-              {/* <button
+              <button
                 onClick={() => openChat(friend._id)}
                 className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg"
               >
                 Chat
-              </button> */}
+              </button>
 
               <button
                 onClick={() => removeFriend(friend._id)}
